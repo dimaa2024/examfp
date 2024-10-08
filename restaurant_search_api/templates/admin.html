@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+<body>
+    <h2>Admin Page</h2>
+    <h3>Restaurants List</h3>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Opening Hours</th>
+            <th>Cuisine Type</th>
+            <th>Is Kosher</th>
+            <th>Actions</th>
+        </tr>
+        {% for restaurant in restaurants %}
+        <tr>
+            <td>{{ restaurant.name }}</td>
+            <td>{{ restaurant.address }}</td>
+            <td>{{ restaurant.phone }}</td>
+            <td>{{ restaurant.website }}</td>
+            <td>{{ restaurant.opening_hours }}</td>
+            <td>{{ restaurant.cuisine_type }}</td>
+            <td>{{ restaurant.is_kosher }}</td>
+            <td>
+                <form action="/admin/delete/{{ restaurant.id }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Add New Restaurant</h3>
+    <form action="/admin/add" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required><br>
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required><br>
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website" required><br>
+        <label for="opening_hours">Opening Hours:</label>
+        <input type="text" id="opening_hours" name="opening_hours" required><br>
+        <label for="cuisine_type">Cuisine Type:</label>
+        <input type="text" id="cuisine_type" name="cuisine_type" required><br>
+        <label for="is_kosher">Is Kosher:</label>
+        <input type="text" id="is_kosher" name="is_kosher" required><br>
+        <button type="submit">Add Restaurant</button>
+    </form>
+</body>
+</html>
