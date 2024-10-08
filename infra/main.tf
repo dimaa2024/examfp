@@ -16,7 +16,7 @@ resource "aws_secretsmanager_secret_version" "restaurant_api_secrets_version" {
 }
 
 resource "aws_instance" "restaurant_api" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "ami-0d5eff06f840b45e9"
   instance_type = "t2.micro"
 
   tags = {
